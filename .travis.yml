@@ -12,7 +12,7 @@ install:
 script:
   - yarn build
   # build docker images
-  - docker build -t pederyodock/travis-ci-react-static .
+  - docker build -t $DOCKER_USERNAME/travis-ci-react-static .
 
 deploy:
   provider: script

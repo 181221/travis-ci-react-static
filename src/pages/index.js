@@ -4,5 +4,6 @@ import { withSiteData } from 'react-static'
 export default withSiteData(() => (
   <div style={{ textAlign: 'center' }}>
     <h1>Welcome to React-Static</h1>
+    <h1>Testing CI</h1>
   </div>
 ))
