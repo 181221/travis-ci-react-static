@@ -16,11 +16,11 @@ install:
 script:
   - yarn build
   # build docker images
-  - docker build -t pederyodock/travis-ci-react-static .
+  - docker build -t pederyodock/travis-ci-react-static:latest .
 
 deploy:
   provider: script
   script:
     # push to dockerhub
-    docker push pederyodock/travis-ci-react-static;
+    docker push pederyodock/travis-ci-react-static:lastest;
   branch: master
