@@ -5,10 +5,6 @@ node_js:
 services:
   - docker
 
-before_install:
-  # login to docker registries (dockerhub + heroku)
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
 install:
   # install deps
   - yarn install
@@ -16,11 +12,10 @@ install:
 script:
   - yarn build
   # build docker images
-  - docker build -t pederyodock/travis-ci-react-static:latest .
+  - docker build -t pederyodock/travis-ci-react-static .
 
 deploy:
   provider: script
-  script:
-    # push to dockerhub
-    docker push pederyodock/travis-ci-react-static:lastest;
-  branch: master
+  script: bash docker_push
+  on:
+    branch: master
