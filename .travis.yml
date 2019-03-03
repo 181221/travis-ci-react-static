@@ -17,7 +17,7 @@ script:
   - yarn test
   - yarn build
   # build docker images
-  - docker build -t 181221/travis-ci-react-static ./dist
+  - docker build -t 181221/travis-ci-react-static .
 
 deploy:
   provider: script
