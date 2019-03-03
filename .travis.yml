@@ -1,0 +1,27 @@
+sudo: required
+language: node_js
+node_js:
+  - "stable"
+services:
+  - docker
+
+before_install:
+  # login to docker registries (dockerhub + heroku)
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+install:
+  # install deps
+  - yarn install
+
+script:
+  - yarn test
+  - yarn build
+  # build docker images
+  - docker build -t 181221/travis-ci-react-static .
+
+deploy:
+  provider: script
+  script:
+    # push to dockerhub
+    docker push 181221/travis-ci-react-static;
+  branch: master
